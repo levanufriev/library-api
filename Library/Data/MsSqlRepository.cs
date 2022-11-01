@@ -30,7 +30,7 @@ namespace Library.Data
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-            return await dbSet.AsNoTracking().ToListAsync();
+            return await dbSet.ToListAsync();
         }
 
         public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includeProperties)
@@ -45,7 +45,7 @@ namespace Library.Data
 
         public async Task<IEnumerable<T>> GetAsync(Expression<Func<T, bool>> filter)
         {
-            return await dbSet.AsNoTracking().Where(filter).ToListAsync();
+            return await dbSet.Where(filter).ToListAsync();
         }
 
         public async Task<T> GetAsync(int id, params Expression<Func<T, object>>[] includeProperties)
