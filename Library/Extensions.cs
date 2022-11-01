@@ -28,6 +28,22 @@ namespace Library
                 CategoryName = categoryName
             };
         }
+
+        public static CategoryDto AsDto(this Category category)
+        {
+            var titlesList = new List<string>();
+            foreach (var book in category.Books)
+            {
+                titlesList.Add(book.Title);
+            }
+
+            return new CategoryDto
+            {
+                Id = category.Id,
+                Name = category.Name,
+                BookTitles = titlesList
+            };
+        }
     }   
 }
 
